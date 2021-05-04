@@ -1,8 +1,8 @@
 import { ITicket, Ticket } from '../db/models';
 
-export const getTickets = async (): Promise<ITicket[]> => {
+export const getTickets = async (query: any): Promise<ITicket[]> => {
   try {
-    const users = await Ticket.find();
+    const users = await Ticket.find({ userId: query.userId, priority: query.priority });
 
     return users;
   } catch (error) {
